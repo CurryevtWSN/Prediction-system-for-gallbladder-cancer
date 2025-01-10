@@ -1,0 +1,15 @@
+Prediction system for gallbladder cancer distant metastasis:a retrospective cohort study based on machine learning
+
+Random_state_new = 50
+#LR
+logis_model = LogisticRegression(random_state=random_state_new, solver='lbfgs', multi_class='multinomial')
+#MLP
+mlp_model = MLPClassifier(hidden_layer_sizes=(100,), activation='relu', solver='lbfgs',alpha=0.0001,batch_size='auto', learning_rate='constant',learning_rate_init=1,power_t=0.5, max_iter=200,shuffle=True, random_state=random_state_new)
+#Bagging
+Bag = BaggingClassifier(KNeighborsClassifier(),max_samples=0.5, max_features=0.5, random_state=random_state_new)
+#XGB
+xgb_model = xgb.XGBClassifier(n_estimators=100, max_depth=2, learning_rate=1, random_state=random_state_new)
+#AB
+AB = AdaBoostClassifier(n_estimators=10, random_state=random_state_new)
+#GBM
+gbm = GradientBoostingClassifier(n_estimators=100, learning_rate=1, max_depth=1, random_state=random_state_new)
